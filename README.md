@@ -2,7 +2,9 @@
 This is a simple web application for creating and managing a personal to-do list. Users can log in with given credentials and perform CRUD operations on tasks in the to-do list. Also, the application persists data even after refreshing the page.
 
 # Features
+
 **User authentication:** Users can log in with the given credentials and log out.
+
 **Task management:**
   1. Users can create new tasks with a title and description.
   2. Users can mark tasks as completed or uncompleted.
@@ -46,6 +48,6 @@ API: Contains backend logic and routes for handling user authentication and task
 utils: Contains utility functions, such as middleware for verifying JWT tokens.
 db: Contains database configuration and connection setup.
 
-# Contributors
+# Contributor
 
 Riya Srivastava
