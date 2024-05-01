@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(bg.jpg);
+    background-size: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: black; 
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: cyan;
+}
+
+.form input[type="text"],
+.form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-actions {
+    text-align: center;
+}
+
+.button, .button-logout {
+    padding: 10px 20px;
+    background-color: aqua;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 5px;
+    font-weight: bold; 
+    margin-bottom: 10px;
+}
+
+.button:hover, .button-logout {
+    border: 3px solid aqua;
+    background-color: black;
+    color: white;
+}
+
+.button-logout{
+    position: absolute;
+    top:0;
+    right:0;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.task {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.task .task-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.task .task-description {
+    margin-bottom: 10px;
+}
+
+.task .task-actions .button {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.task .task-actions .button:hover {
+    background-color: #c82333;
+}

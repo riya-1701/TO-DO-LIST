@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Portal</title>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+        body{
+            background-image: url(bg.jpg);
+            background-size: 100% 670px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+        }
+        .container{
+            width: 350px;
+            height: 400px;
+            text-align: center;
+            margin-left: 36%;
+            margin-top: 7%;
+            color: white;
+            background-color: black;
+        }
+        .container h1{
+            font-size: 36px;
+            color: aqua;
+            padding: 22px;
+        }
+        .container .text{
+            position: relative;
+            top: 7%;
+        }
+        .input1{
+            border: none;
+            background-color: black;
+            border-bottom: 2px solid white;
+            width: 285px;
+            font-size: 20px;
+            margin-top: 40px;
+            outline: none;
+            color: white;
+            /* padding: 5px; */
+        }
+        .form-box button{
+            width: 250px;
+            height: 44px;
+            background-color: aqua;
+            color: black;
+            border: none;
+            font-size: 24px;
+            border-radius: 25px;
+            margin-top: 50px;
+            cursor: pointer;
+            
+        }
+        button:hover{
+            border: 3px solid aqua;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1>Login</h1>
+            <form>
+                <input  class="input1" type="text" placeholder="Enter Username" id="userName">
+                <br>
+                <input  class="input1" type="password" placeholder="Enter Password" id="password">
+                <button type="button" onclick="login(event)">Login</button><br>
+            </form>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        isLoggedIn();
+
+        function isLoggedIn() {
+
+            let isLoggedIn = localStorage.getItem('isLoggedIn');
+
+            if(isLoggedIn=='true'){
+                window.location.href = "cc.html";
+            }else{
+                return
+            }
+        }
+
+        async function login(e){
+            console.log("In login function");
+            e.preventDefault();
+            let userName = document.getElementById('userName').value;
+            let password = document.getElementById('password').value;
+
+            if(userName !=="" && password !==""){
+              let response = fetch('http://localhost:5000/user/login',{
+              method:'Post',
+              body:JSON.stringify({userName,password}),
+              headers:{'Content-type':'application/json'},
+            });
+        
+            response.then(res =>
+              res.json()).then(data => {
+                  console.log(data)
+                  if(data.status==200){
+                    localStorage.setItem('isLoggedIn','true');
+                    location.href='cc.html';
+                  }else if(data.statusCode==404){
+                    alert("User not found!");
+                  }else if(data.statusCode==400){
+                    alert("Wrong credential");
+                  }else{
+                    alert("Invalid Credentials! Try Again.");
+                  }
+            })
+            }
+          }
+        
+    </script>
+</body>
+</html>
